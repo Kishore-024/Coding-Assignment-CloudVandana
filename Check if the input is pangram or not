@@ -1,0 +1,24 @@
+public class PangramCheck {
+    public static void main(String[] args) {
+        String input = "The quick brown fox jumps over the lazy dog";
+        boolean isPangram = isPangram(input);
+        System.out.println("Is Pangram: " + isPangram);
+    }
+
+    public static boolean isPangram(String str) {
+        str = str.toLowerCase();
+        boolean[] alphabetPresent = new boolean[26];
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'a' && ch <= 'z') {
+                alphabetPresent[ch - 'a'] = true;
+            }
+        }
+        for (boolean isPresent : alphabetPresent) {
+            if (!isPresent) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
